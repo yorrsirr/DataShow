@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_car_set_item_brand_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="@color/white_background"
+        android:text="这是品牌名"/>
+
+    <TextView
+        android:id="@+id/tv_car_set_item_car_set_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="@color/white_background"
+        android:text="这是车系名"/>
+
+    <TextView
+        android:id="@+id/tv_car_set_item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="@color/white_background"
+        android:text="这是品牌名"/>
+
+</LinearLayout>

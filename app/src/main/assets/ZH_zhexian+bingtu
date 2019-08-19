@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+	        padding: 0;
+
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:100%;"></div>
+<!-- ECharts单文件引入 -->
+
+<script src="myTheme.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'), 'myTheme');
+
+    option = {
+    title: {
+        show:true,
+        text: '折线图+饼图',
+        textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#FFFFFF'
+        },
+        x: '5',
+        y: '5'
+    },
+    grid: {
+        x: 40,
+        y: 60,
+        x2: 20,
+        y2: 45,
+        borderWidth: 1,
+    },
+    legend: {
+        x: 'center',
+        y: 'bottom',
+    },
+        tooltip: {
+            trigger: 'axis',
+            showContent: false
+        },
+        dataset: {
+            source: [
+                ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+                ['Matcha', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
+                ['Milk', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
+                ['Cheese', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                ['Walnut', 55.2, 67.1, 69.2, 72.4, 53.9, 39.1]
+            ]
+        },
+        xAxis: {type: 'category'},
+        yAxis: {gridIndex: 0},
+        grid: {top: '55%'},
+        series: [
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {type: 'line', smooth: true, seriesLayoutBy: 'row'},
+            {
+                type: 'pie',
+                id: 'pie',
+                radius: '30%',
+                center: ['50%', '25%'],
+                label: {
+                    formatter: '{b}: {@2012} ({d}%)'
+                },
+                encode: {
+                    itemName: 'product',
+                    value: '2012',
+                    tooltip: '2012'
+                }
+            }
+        ]
+    };
+
+    myChart.on('updateAxisPointer', function (event) {
+        var xAxisInfo = event.axesInfo[0];
+        if (xAxisInfo) {
+            var dimension = xAxisInfo.value + 1;
+            myChart.setOption({
+                series: {
+                    id: 'pie',
+                    label: {
+                        formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+                    },
+                    encode: {
+                        value: dimension,
+                        tooltip: dimension
+                    }
+                }
+            });
+        }
+    });
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

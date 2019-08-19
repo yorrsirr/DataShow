@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+	        padding: 0;
+
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:100%;"></div>
+<!-- ECharts单文件引入 -->
+
+<script src="myTheme.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'), 'myTheme');
+
+    option = {
+    title: {
+        show:true,
+        text: '各端总用户数统计',
+        textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#FFFFFF'
+        },
+        x: '5',
+        y: '5'
+    },
+    grid: {
+        x: 40,
+        y: 40,
+        x2: 20,
+        y2: 45,
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        x: 'left',
+        y: 'bottom',
+        data:['Android端','IOS端','小程序','电脑客户端','网页端']
+    },
+    series: [
+        {
+            name:'访问来源',
+            type:'pie',
+            selectedMode: 'single',
+            radius: [0, '25%'],
+            center: ['60%', '50%'],
+            label: {
+                normal: {
+                    position: 'inner'
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false
+                }
+            },
+            data:[
+                {value:12000, name:'移动端'},
+                {value:10000, name:'pc端'}
+            ]
+        },
+        {
+            name:'访问来源',
+            type:'pie',
+            radius: ['40%', '55%'],
+            center: ['60%', '50%'],
+            data:[
+                {value:5010, name:'Android端'},
+                {value:4020, name:'IOS端'},
+                {value:2970, name:'小程序'},
+                {value:4200, name:'电脑客户端'},
+                {value:5800, name:'网页端'},
+            ]
+        }
+    ]
+    };
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

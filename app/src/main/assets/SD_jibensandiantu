@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+	        padding: 0;
+
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:100%;"></div>
+<!-- ECharts单文件引入 -->
+
+<script src="myTheme.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'), 'myTheme');
+
+    option = {
+    title: {
+        show:true,
+        text: '基本散点图',
+        textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#FFFFFF'
+        },
+        x: '5',
+        y: '5'
+    },
+    grid: {
+        x: 40,
+        y: 40,
+        x2: 20,
+        y2: 45,
+        borderWidth: 1,
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{c}"
+    },
+    xAxis: {},
+    yAxis: {},
+    series: [{
+        symbolSize: 15,
+        data: [
+            [10.0, 8.04],
+            [8.0, 6.95],
+            [13.0, 7.58],
+            [9.0, 8.81],
+            [11.0, 8.33],
+            [14.0, 9.96],
+            [1.0, 7.24],
+            [2.0, 4.26],
+            [12.0, 10.84],
+            [7.0, 4.82],
+            [5.0, 5.68]
+        ],
+        type: 'scatter'
+    },
+    {
+        symbolSize: 15,
+        data: [
+            [11.0, 7.04],
+            [3.0, 4.95],
+            [14.0, 4.58],
+            [4.0, 4.81],
+            [13.0, 4.33],
+            [14.0, 5.96],
+            [7.0, 9.24],
+            [3.0, 8.26],
+            [14.0, 11.84],
+            [3.0, 8.82],
+            [4.0, 5.68]
+        ],
+        type: 'scatter'
+    }
+    ]
+    };
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

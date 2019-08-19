@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+	        padding: 0;
+
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:100%;"></div>
+<!-- ECharts单文件引入 -->
+
+<script src="myTheme.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'), 'myTheme');
+
+    option = {
+    title: {
+        show:true,
+        text: '各端新用户数（过去7日）',
+        textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#FFFFFF'
+        },
+        x: '5',
+        y: '5'
+    },
+    legend: {
+        data:['网页端','电脑客户端','安卓端','IOS端','小程序'],
+        x: 'center',
+        y: 'bottom',
+        itemHeight: 8,
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    line: {
+        symbolSize: 3,
+        symbol: 'emptyCircle',
+        smooth: false
+    },
+    grid: {
+        x: 40,
+        y: 40,
+        x2: 20,
+        y2: 60,
+    },
+    xAxis: {
+        type: 'category',
+        data: ['4.19','4.20','4.21','4.22','4.23','4.24','4.25']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [21, 23, 35, 21, 33, 13, 36],
+        type: 'line',
+        name: "网页端",
+        type: "line"
+    },
+    {
+        data: [12, 15, 38, 23, 15, 35, 28],
+        type: 'line',
+        name: "电脑客户端",
+        type: "line"
+    },
+    {
+        data: [35, 45, 54, 43, 45, 64, 51],
+        type: 'line',
+        name: "安卓端",
+        type: "line"
+    },
+    {
+        data: [23, 33, 12, 8, 23, 24, 35],
+        type: 'line',
+        name: "IOS端",
+        type: "line"
+    },
+    {
+        data: [12, 25, 14, 35, 34, 22, 12],
+        type: 'line',
+        name: "小程序",
+        type: "line"
+    }
+    ]
+    };
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

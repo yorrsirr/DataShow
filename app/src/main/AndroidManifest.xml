@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xq.datashow">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:networkSecurityConfig="@xml/network_security_config">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ZhexianActivity" />
+        <activity android:name=".ZhuzhuangActivity" />
+        <activity android:name=".BingtuActivity" />
+        <activity android:name=".SandianActivity" />
+        <activity android:name=".DilizuobiaoActivity" />
+        <activity android:name=".LeidaActivity" />
+        <activity android:name=".LoudouActivity" />
+        <activity android:name=".YibiaopanActivity" />
+        <activity android:name=".XiangxingActivity" />
+        <activity android:name=".ZuheActivity" />
+        <activity android:name=".OperationDateActivity" />
+        <activity android:name=".SearchBrandActivity" >
+
+        </activity>
+        <activity android:name=".BrandDetailActivity" />
+        <activity android:name=".CarSetActivity">
+
+        </activity>
+    </application>
+
+</manifest>

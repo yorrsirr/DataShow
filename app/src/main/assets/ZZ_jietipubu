@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+	        padding: 0;
+
+        }
+    </style>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 100%;height:100%;"></div>
+<!-- ECharts单文件引入 -->
+
+<script src="myTheme.js"></script>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('main'), 'myTheme');
+
+    option = {
+    title: {
+        show:true,
+        text: '堆叠柱状图',
+        textStyle: {
+            fontSize: 12,
+            fontWeight: 'bolder',
+            color: '#FFFFFF'
+        },
+        x: '5',
+        y: '5'
+    },
+    grid: {
+        x: 40,
+        y: 40,
+        x2: 20,
+        y2: 45,
+        borderWidth: 1,
+    },
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: function (params) {
+            var tar;
+            if (params[1].value != '-') {
+                tar = params[1];
+            }
+            else {
+                tar = params[0];
+            }
+            return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+        }
+    },
+    legend: {
+        data:['支出','收入'],
+        x: 'center',
+        y: 'bottom',
+        itemHeight: 8
+    },
+    xAxis: {
+        type : 'category',
+        splitLine: {show:false},
+        data :  function (){
+            var list = [];
+            for (var i = 1; i <= 11; i++) {
+                list.push('11月' + i + '日');
+            }
+            return list;
+        }()
+    },
+    yAxis: {
+        type : 'value'
+    },
+    series: [
+        {
+            name: '支出 ',
+            type: 'bar',
+            stack: '总量',
+            itemStyle: {
+                normal: {
+                    barBorderColor: 'rgba(0,0,0,0)',
+                    color: 'rgba(0,0,0,0)'
+                },
+                emphasis: {
+                    barBorderColor: 'rgba(0,0,0,0)',
+                    color: 'rgba(0,0,0,0)'
+                }
+            },
+            data: [0, 900, 1245, 1530, 1376, 1376, 1511, 1689, 1856, 1495, 1292]
+        },
+        {
+            name: '收入',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            data: [900, 345, 393, '-', '-', 135, 178, 286, '-', '-', '-']
+        },
+        {
+            name: '支出',
+            type: 'bar',
+            stack: '总量',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'bottom'
+                }
+            },
+            data: ['-', '-', '-', 108, 154, '-', '-', '-', 119, 361, 203]
+        }
+    ]
+    };
+
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>
